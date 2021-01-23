@@ -5,35 +5,22 @@ const validator = require('validator')
 
 const userSchema = new mongoose.Schema({
     
-    cust_name: {
-        type: String,
-        // required: true,
-        // trim: true,
-        // lowerCase:true,
-    },cust_email: {
-        type: String,
-        required: true,
-        // unique:true,
-        // trim: true,
-        // lowercase: true,
-        // validate(value) {
-        //     if (!validator.isEmail(value)) {
-        //         throw new Error('Email is invalid')
-        //     }
-        // }
-    },
-    cust_addrese: {
-        type: String,
-        // required: true,
-    },
-    cust_city:{
-        type:String
-    },cust_mob:{
-        type:Number
-    },cust_pin:{
-        type:Number
-    }
-
+    Order:{
+        type:String,
+            require:true
+        },
+        Category:{
+            type:String,
+            require:true
+        },
+        Price:{
+            type:Number,
+            required:true
+        },
+        Date:{
+            type:Date,
+            default:Date.now()
+        }
 })
 const User = mongoose.model('user', userSchema)
 module.exports = User
