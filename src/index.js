@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require("mongoose");
 const { MONGOURI } = require('./db/mongoose');
+require('./router/user')
 // require('./db/mongoose')
 const app = express()
 const port = process.env.PORT || 3000
@@ -19,13 +20,18 @@ mongoose.connect(MONGOURI,{
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/user', function (req, res) {
+app.get('/add', function (req, res) {
     res.render("user")
 })
 
 app.get('/order',(req,res)=>{
     res.render("order")
 })
+
+app.get('/show',(req,res)=>{
+    res.render("show")
+})
+
 const userRouter =require('./router/user')
 
 // app.use()
