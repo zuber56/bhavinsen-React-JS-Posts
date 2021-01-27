@@ -9,16 +9,77 @@
 
 </head>
 <body>
-
 <h1 style="margin-left: 500px;">Customize Pizza </h1>
 
 <div style="width: 900px;height: 700px;margin-left: 300px;">
+  
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <h5>Choose your Toppings</h5>
+  <form class="was-validated">
+   
+  <br>Include Misc fees
+  <input type="checkbox" class="optional" data-id="optional3" /> <input type="checkbox" class="optional" data-id="optional3" />
+  <input type="text" class="fee" id="optional3" value="150" name="mfees" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<br>
+<br>Include Misc fees
+  <input type="checkbox" class="optional" data-id="optional30" /> <input type="checkbox" class="optional" data-id="optional30" />
+  <input type="text" class="fee" id="optional30" value="165" name="mfees" onkeydown="return false"  style="width:90px;margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<br>
+<br>Include Misc fees
+  <input type="checkbox" class="optional" data-id="optional3" /> <input type="checkbox" class="optional" data-id="optional3" />
+  <input type="text" class="fee" id="optional3" value="150" name="mfees" onkeydown="return false"  style="width:90px;margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<br>
+<br>Include Misc fees
+  <input type="checkbox" class="optional" data-id="optional3" /> <input type="checkbox" class="optional" data-id="optional3" />
+  <input type="text" class="fee" id="optional3" value="150" name="mfees" onkeydown="return false"  style="width:90px;margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<br>
+<br>Include Misc fees
+  <input type="checkbox" class="optional" data-id="optional3" /> <input type="checkbox" class="optional" data-id="optional3" />
+  <input type="text" class="fee" id="optional3" value="150" name="mfees" onkeydown="return false"  style="width:90px;margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<br>
+  <br>Include Transport fees
+  <input type="checkbox" class="optional" data-id="optional2" />
+  <input type="number" class="custom-control-label" id="optional2" name="tfees">
+<br>
+  <br>Optional fees total
+  <input type="number" id="toptional" name="toptional" class="toptional" readonly>
+</form>
+</div>
+<!--  -->
+</body>
+<script>
+  function optionalfee() {
+    var total = 0;
+    $('.optional:checked').each(function() {
+      var val = $("#"+$(this).data("id")).val();
+      val = isNaN(val) || "" === $.trim(val) ? 0 : parseFloat(val);
+      total += val;
+    });
+    $('#toptional').val(total);
+  
+  }
+  
+  $(function() {
+    $(".optional").each(function() {
+      $(this).on("click", optionalfee);
+      // if not next to each other, 
+      // use  $("#"+$(this).data("id")).on("input", optionalfee);
+      $(this).next().on("input", optionalfee);
+    });
+  });
+</script>
+</html>
+
+<!-- <a href="/order">CUSTOMIZE PIZZA</a>  | <a href="/add">SIDE ORDER </a> | <a href="/add">DELEVERY ADDRESS </a>  |    <a href="/show">Display</a>
+<a href="/add-users-api">Add API </a>  |   
     <h5>Choose your Toppings</h5>
     <form class="was-validated"><br>
                 <p style="margin-left: 50px;">VEGETABLES</p>
              <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="cust_veg" value="155"> 
-                <label class="custom-control-label" for="customControlValidation1">Black Olives 155</label>
+                <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="cust_veg" value="155">
+               <label class="custom-control-label" for="customControlValidation1">Black Olives 155</label>
             </div>
            <div class="custom-control custom-checkbox mb-3">
             <input type="checkbox" class="custom-control-input" id="customControlValidation2" name="cust_veg" value="134">
@@ -49,10 +110,4 @@
             <label class="custom-control-label" for="customControlValidation8">Mushurooms 150</label>
           </div>
           <button type="submit" class="btn btn-primary">Order</button> <label class="custom-control-label" for="customControlValidation8"></label>
-      </form>
-</div>
-
-</body>
-</html>
-
-
+      </form> -->

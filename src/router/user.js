@@ -1,13 +1,17 @@
 const express=require('express')
-const User =require('../models/user')
+const User=require('../models/user')
 const router = new  express.Router()
  const validator=require('validator')
 const bodyParser = require('body-parser')
+
 const { check, validationResult } = require('express-validator')
 const app = express()
 
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: true }));
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
 const urlencoded= bodyParser.urlencoded({extended:true})
 router.post("/add",urlencoded,async (req,res)=> {
     try {
@@ -26,14 +30,29 @@ router.post("/add",urlencoded,async (req,res)=> {
    // const user = new User(req.body)
         await data.save(data)
         console.log('--------------->'+data)    
-         res.render('user')
-      
+        res.render('user')
+        
+       
      } catch (error) {
-        //console.log("$)$)$", error)
+       
         res.status(400).send(error)
      }
 })
-
+/*show data only testing maate che*/
+router.get('/show', function(req, res) {
+    User.find(function(err, users) {
+       if (err) {
+         console.log(err);
+       } else {
+         res.render('show', { users: users });
+         
+       }
+   }); 
+});
+// app.all('/express-flash', (req, res ) {
+//     req.flash('success', 'This is a flash message using the express-flash module.');
+//     res.redirect(301, '/');
+//   })
 // if(!cust_name)
 // {
 //     check('cust_name','musut be 3+')
