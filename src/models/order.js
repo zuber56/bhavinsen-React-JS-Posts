@@ -3,27 +3,23 @@ const validator = require('validator')
 //const bcrypt = require('bcryptjs')
 //const jwt = require('jsonwebtoken')
 
-const userSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
     
-    Order:{
+    ord_name:{
         type:String,
             require:true
         },
-        Category:{
-            type:String,
-            require:true
-        },
-        Price:{
+        ord_price:{
             type:Number,
             required:true
         },
-        Date:{
+        ord_date:{
             type:Date,
             default:Date.now()
         }
 })
-const User = mongoose.model('user', userSchema)
-module.exports = User
+const Order = mongoose.model('order', orderSchema)
+module.exports = Order
 
 // userSchema.methods.generateAuthToken = async function () {
 //     const user = this

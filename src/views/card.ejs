@@ -14,7 +14,7 @@
   <a href="/order">CUSTOMIZE PIZZA</a>  | <a href="/add">SIDE ORDER </a> | <a href="/add">DELEVERY ADDRESS </a>  |    <a href="/show">Contact Details</a>|
    
 
-  <% if(users.length>0) { %>
+  <% if(order.length>0) { %>
 <table class="table table-dark">
   <thead>
     
@@ -26,13 +26,13 @@
     </tr>
   </thead>
   <tbody>
-    <% for(var i=0; i<users.length;i++) { %>
-    <tr>
+    <% for(var i=0; i<order.length;i++) { %>  
+      <tr>
       <td><%= i %></td>
-      <td><%= users[i].cust_name %></td>
-      <td><%= users[i].cust_email %></td>
-      <td><%= users[i].cust_mob %></td>
-     
+      <th><%= order[i]._id %></th>
+      <td><%= order[i].ord_name %></td>
+      <td><%= order[i].ord_price %></td>
+      <td><%= order[i].ord_date %></td>
     </tr>
     <% } %>
   </tbody>

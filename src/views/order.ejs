@@ -6,61 +6,103 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 <body>
 <h1 style="margin-left: 500px;">Customize Pizza </h1>
 
 <div style="width: 900px;height: 700px;margin-left: 300px;">
-  
-  
+  <a href="/order">CUSTOMIZE PIZZA</a>  | <a href="/add">SIDE ORDER </a> | <a href="/add">DELEVERY ADDRESS </a>  |    <a href="/show">Contact Details</a>
+<a href="/add-users-api">Add API </a>  |
+ 
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <h5>Choose your Toppings</h5>
-  <form class="was-validated">
-   
-  <br>Include Misc fees
-  <input type="checkbox" class="optional" data-id="optional3" /> <input type="checkbox" class="optional" data-id="optional3" />
-  <input type="text" class="fee" id="optional3" value="150" name="mfees" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+  <p style="margin-left: 50px;">VEGETABLES</p>
+  <form class="was-validated" action="/order" method="POST">
+
+   <div style="color: rgb(196, 23, 118);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pizza name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6md&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8mx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;price IND</div>
+  <div style="color: rgb(113, 76, 201);float: left;margin-left: 20px;">Black Olives</div>
+  &nbsp;&nbsp;&nbsp;
+  <input type="checkbox" class="optional" data-id="optional33"  style="width: 40px;" /> <input type="checkbox" class="optional" data-id="optional3" style="width: 60px;" />
+  <input type="text" class="fee" id="optional3" value="175" name="bpizaa" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+  <input type="hidden" class="fee" id="optional33" value="150" name="bpizaa" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<br><br>
+<div style="color: rgb(113, 76, 201);float: left;margin-left: 20px;">Sweet Corns</div>&nbsp;&nbsp;
+  <input type="checkbox" class="optional" data-id="optional4"  style="width: 40px;" /> <input type="checkbox" class="optional" data-id="optional4" style="width: 60px;" />
+  <input type="text" class="fee" id="optional4" value="165" name="spizza" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 9px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
 <br>
-<br>Include Misc fees
-  <input type="checkbox" class="optional" data-id="optional30" /> <input type="checkbox" class="optional" data-id="optional30" />
-  <input type="text" class="fee" id="optional30" value="165" name="mfees" onkeydown="return false"  style="width:90px;margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
 <br>
-<br>Include Misc fees
-  <input type="checkbox" class="optional" data-id="optional3" /> <input type="checkbox" class="optional" data-id="optional3" />
-  <input type="text" class="fee" id="optional3" value="150" name="mfees" onkeydown="return false"  style="width:90px;margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<div style="color: rgb(113, 76, 201);float: left;margin-left: 20px;">Green Pepper</div>
+  <input type="checkbox" class="optional" data-id="optional5"  style="width: 40px;" /> <input type="checkbox" class="optional" data-id="optional5" style="width: 60px;" />
+  <input type="text" class="fee" id="optional5" value="250" name="gpizaa" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
 <br>
-<br>Include Misc fees
-  <input type="checkbox" class="optional" data-id="optional3" /> <input type="checkbox" class="optional" data-id="optional3" />
-  <input type="text" class="fee" id="optional3" value="150" name="mfees" onkeydown="return false"  style="width:90px;margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
 <br>
-<br>Include Misc fees
-  <input type="checkbox" class="optional" data-id="optional3" /> <input type="checkbox" class="optional" data-id="optional3" />
-  <input type="text" class="fee" id="optional3" value="150" name="mfees" onkeydown="return false"  style="width:90px;margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<div style="color:rgb(113, 76, 201);float: left;margin-left: 20px;">cheeges Pizza</div>
+  <input type="checkbox" class="optional" data-id="optional6"  style="width: 40px;" /> <input type="checkbox" class="optional" data-id="optional6" style="width: 60px;" />
+  <input type="text" class="fee" id="optional6" value="355" name="cpizza" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<br><br>
+<div style="color: rgb(113, 76, 201);float: left;margin-left: 20px;">Spicail Garlics</div>
+  <input type="checkbox" class="optional" data-id="optional7"  style="width: 40px;" /> <input type="checkbox" class="optional" data-id="optional7" style="width: 60px;" />
+  <input type="text" class="fee" id="optional7" value="450" name="cpizza" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+<br><br>
+<div style="color:rgb(113, 76, 201);float: left;margin-left: 20px;">Broccoli Pizza</div>
+  <input type="checkbox" class="optional" data-id="optional8"  style="width: 40px;" /> <input type="checkbox" class="optional" data-id="optional8" style="width: 60px;" />
+  <input type="text" class="fee" id="optional8" value="250" name="cpizza" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
+
+<br><br>
+<div style="color: rgb(113, 76, 201);float: left;margin-left: 20px;">Musurom Pizza</div>
+  <input type="checkbox" class="optional" data-id="optional9"  style="width: 40px;" /> <input type="checkbox" class="optional" data-id="optional9" style="width: 50px;" />
+  <input type="text" class="fee" id="optional9" value="275" name="cpizza" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
 <br>
-  <br>Include Transport fees
-  <input type="checkbox" class="optional" data-id="optional2" />
-  <input type="number" class="custom-control-label" id="optional2" name="tfees">
+
+  <br><div style="color: rgb(97, 14, 28);float: left;margin-left: 20px;">Manually pizza add</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="checkbox" class="optional" data-id="optional2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="text" class="custom-control-label;" id="optional2" style="width: 70px;border: 5px double rgb(49, 112, 212)" name="tfees">
 <br>
-  <br>Optional fees total
-  <input type="number" id="toptional" name="toptional" class="toptional" readonly>
+  <br>
+  <input type="number" id="toptional" name="toptional" class="toptional form-control" style="width: 210px;float: left;" placeholder="TOTAL" readonly>
+  <input type="number" id="toptionalgst" name="toptionalgst" class="toptionalgst form-control"style="width:140px;float:left;margin-left:10px"  placeholder="GST"  readonly>
+  <br><br>
+  <input type="number" id="ord_price" name="ord_price" style="width: 360px;float: left;" class="toptionalgst form-control" placeholder="TOTAL PRICE" readonly><br><br>
+  <div style="margin-left: 160px;">OR</div>
+  <input type="number" id="dollar" name="ord_price1" style="width: 360px;float: left;" class="toptionalgst form-control" placeholder="TOTAL DOLLER" readonly><br><br>
+  
+  <input type="text" name="ord_name" class="form-control" id="ord_name" style="width: 360px;" placeholder="Enter customer name"> <br>
+  
+  <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Customer Order" name="submitTotal" id="submitTotal">  
+  
+
 </form>
 </div>
+
 <!--  -->
 </body>
 <script>
   function optionalfee() {
     var total = 0;
+    var gst = 0;
+    var totoalPirce =0 ;
+    var dollar=0;
     $('.optional:checked').each(function() {
       var val = $("#"+$(this).data("id")).val();
       val = isNaN(val) || "" === $.trim(val) ? 0 : parseFloat(val);
       total += val;
+      gst=total/18.5;
+      totoalPirce=total+gst;
+      dollar=totoalPirce/73.04;
     });
     $('#toptional').val(total);
+    $('#toptionalgst').val((gst).toFixed(2));
+    $('#ord_price').val((totoalPirce).toFixed(2));
+    $('#dollar').val((dollar).toFixed(3));
   
+   // $('#toptionaltotalprice').val(totoalPirce);
   }
-  
+
   $(function() {
     $(".optional").each(function() {
       $(this).on("click", optionalfee);
@@ -69,6 +111,7 @@
       $(this).next().on("input", optionalfee);
     });
   });
+ 
 </script>
 </html>
 

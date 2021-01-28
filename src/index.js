@@ -2,7 +2,7 @@ const express = require('express')
 const User =require('./models/user')
 const mongoose = require("mongoose");
 const { MONGOURI } = require('./db/mongoose');
-require('./router/user')
+//require('./router/user')
 // require('./db/mongoose')
 
 const app = express()
@@ -27,16 +27,11 @@ app.get('/add', function (req, res) {
     
 })  
 
-
-
-
-
-
-
-
 app.get('/order',(req,res)=>{
     res.render("order")
 })
+
+
 
 //List Table Data
 
@@ -65,9 +60,11 @@ app.get('/order',(req,res)=>{
 
 //user
 const userRouter =require('./router/user')
+const orderRouter=require('./router/order')
 
 // app.use()
 app.use(userRouter)
+app.use('/',orderRouter)
 app.listen(port, () => {
 console.log('Server is up on port ' + port)
 })

@@ -1,31 +1,106 @@
-const mongoose = require('mongoose')
-const validator = require('validator')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const express=require('express')
+//const User=require('../models/user')
+const Order=require('../models/order')
+const router = new  express.Router()
+ const validator=require('validator')
+const bodyParser = require('body-parser')
 
-const userSchema = new mongoose.Schema({
+const { check, validationResult } = require('express-validator')
+const User = require('../models/user')
+const app = express()
+
+app.use(bodyParser.json());
+const urlencoded= bodyParser.urlencoded({extended:true})
+router.post("/order",urlencoded,async (req,res)=> {
+    try {
     
-    Order:{
-        type:String,
-            require:true
-        },
-        Category:{
-            type:String,
-            require:true
-        },
-        Price:{
-            type:Number,
-            required:true
-        },
-        Date:{
-            type:Date,
-            default:Date.now()
+        const mybodydata={
+             ord_name:req.body.ord_name,
+             ord_price:req.body.ord_price,
+             ord_date:req.body.ord_date
+        
         }
+        const data = Order(mybodydata)
 
+   // const user = new User(req.body)
+        await data.save((data))
+        console.log('--------------->'+data)    
+       //res.render('order')
+        res.redirect("/user");
+        
+       
+     } catch (error) {
+       
+        res.status(400).send(error)
+     }
 })
-const User = mongoose.model('User', userSchema)
-module.exports = User
+router.get('/card/:id', function(req, res) {
+    Order.findOne(req.params.id, function (err, users) {
+       if (err) {
+         console.log(err);
+       } else {
+         res.render('card', { order: users });
+         
+       }
+   }); 
+});
+router.get('/card', function(req, res) {
+    Order.find(function (err, users) {
+       if (err) {
+         console.log(err);
+         console.log('gg')
+       } else {
+         res.render('card', { order: users });
+        // res.send("dddd")
+       }
+   }); 
+});
+/* GET SINGLE POST BY ID */
+// router.get('/card/:id', function(req, res, next) {
+//     User.findById(req.params.id, function (err, post) {
+//       if(err){
+//         Response.errorResponse(err,res);
+//     }else{
+//         Response.successResponse('order',res,post);
+//     }
+//     }); 
+// });
 
+/* GET SINGLE User BY ID */
+// router.get('/card/:id', function(req, res) {
+//   console.log(req.params.id);
+//   User.findById(req.params.id, function (err, user) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//      console.log(user);
+       
+//       res.render('card', {order: user });
+//     }
+//   });
+// });
+// router.get('/card', function(req, res) {
+//     User.find(function(err, order) {
+//        if (err) {
+//          console.log(err);
+//        } else {
+//          res.render('card', { order: order });
+         
+//        }
+//    }); 
+// });
+// router.get('/card/:id', function(req, res) {
+//   User.findById(req.params.id, function (err, orders) {
+//      if (err) {
+//        console.log(err);
+//      } else {
+//        res.render('card', { orders: orders });
+       
+//      }
+//  }); 
+//});
+  
+module.exports =router
 // userSchema.methods.generateAuthToken = async function () {
 //     const user = this
 //     const token = jwt.sign({ _id: user._id.toString() }, '79cb64190b9e41759f422322b20df0bd6ea00cb2')
