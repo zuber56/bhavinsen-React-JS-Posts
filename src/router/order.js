@@ -26,24 +26,46 @@ router.post("/order",urlencoded,async (req,res)=> {
         await data.save((data))
         console.log('--------------->'+data)    
        //res.render('order')
-        res.redirect("/user");
+        res.redirect("/add");
         
-       
      } catch (error) {
        
         res.status(400).send(error)
      }
 })
-router.get('/card/:id', function(req, res) {
-    Order.findOne(req.params.id, function (err, users) {
-       if (err) {
-         console.log(err);
-       } else {
-         res.render('card', { order: users });
+
+
+// router.get('/card/:id', function(req, res) {
+//     Order.findOne(req.params.id, function (err, users) {
+//        if (err) {
+//          console.log(err);
+//        } else {
+//          res.render('user', { order: users });
          
-       }
-   }); 
+//        }
+//    }); 
+// });
+
+
+//
+
+/* GET SINGLE User BY ID */
+router.get('/showcard/:id', function(req, res) {
+  console.log(req.params.id);
+  Order.findById(req.params.id, function(err, user) {
+      if (err) {
+          console.log(err);
+      } else {
+          console.log(user);
+
+          res.render('showcard', { order: user });
+          //res.redirect('../showcard');
+          
+      }
+  });
 });
+
+// 
 router.get('/card', function(req, res) {
     Order.find(function (err, users) {
        if (err) {
@@ -55,51 +77,24 @@ router.get('/card', function(req, res) {
        }
    }); 
 });
-/* GET SINGLE POST BY ID */
-// router.get('/card/:id', function(req, res, next) {
-//     User.findById(req.params.id, function (err, post) {
-//       if(err){
-//         Response.errorResponse(err,res);
-//     }else{
-//         Response.successResponse('order',res,post);
-//     }
-//     }); 
-// });
 
-/* GET SINGLE User BY ID */
-// router.get('/card/:id', function(req, res) {
-//   console.log(req.params.id);
-//   User.findById(req.params.id, function (err, user) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//      console.log(user);
-       
-//       res.render('card', {order: user });
-//     }
-//   });
-// });
-// router.get('/card', function(req, res) {
-//     User.find(function(err, order) {
-//        if (err) {
-//          console.log(err);
-//        } else {
-//          res.render('card', { order: order });
-         
-//        }
-//    }); 
-// });
-// router.get('/card/:id', function(req, res) {
-//   User.findById(req.params.id, function (err, orders) {
-//      if (err) {
-//        console.log(err);
-//      } else {
-//        res.render('card', { orders: orders });
-       
-//      }
-//  }); 
-//});
-  
+/* DELETE User BY ID */
+router.get('/delete/:id', function(req, res) {
+  Order.findByIdAndRemove(req.params.id, function(err, project) {
+      if (err) {
+        res.render('order')
+          //req.flash('error_msg', 'Record Not Deleted');
+          //res.redirect('../display');
+      } else {
+
+          //req.flash('success_msg', 'Record Deleted');
+          res.redirect('../card');
+          //res.render('card')
+      }
+  });
+});
+
+
 module.exports =router
 // userSchema.methods.generateAuthToken = async function () {
 //     const user = this

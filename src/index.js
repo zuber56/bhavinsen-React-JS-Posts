@@ -12,7 +12,7 @@ app.use(express.json())
 
 mongoose.connect(MONGOURI,{
     useCreateIndex:true,
-    // useFindAndModify
+    useFindAndModify:false,
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(() => console.log("OK")).catch((err) => console.log(err))
@@ -26,6 +26,12 @@ app.get('/add', function (req, res) {
     res.render("user")
     
 })  
+
+// app.get('/showcard/:id', function (req, res) {
+//     //res.render("user")
+//     console.log('fsdfsfdsf')
+//     res.render("showcard")
+// })  
 
 app.get('/order',(req,res)=>{
     res.render("order")

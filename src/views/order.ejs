@@ -15,10 +15,7 @@
 <h1 style="margin-left: 500px;">Customize Pizza </h1>
 
 <div style="width: 900px;height: 700px;margin-left: 300px;">
-  <a href="/order">CUSTOMIZE PIZZA</a>  | <a href="/add">SIDE ORDER </a> | <a href="/add">DELEVERY ADDRESS </a>  |    <a href="/show">Contact Details</a>
-<a href="/add-users-api">Add API </a>  |
- 
-  
+  <%- include('header'); -%>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <h5>Choose your Toppings</h5>
   <p style="margin-left: 50px;">VEGETABLES</p>
@@ -54,8 +51,8 @@
   <input type="text" class="fee" id="optional8" value="250" name="cpizza" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
 
 <br><br>
-<div style="color: rgb(113, 76, 201);float: left;margin-left: 20px;">Musurom Pizza</div>
-  <input type="checkbox" class="optional" data-id="optional9"  style="width: 40px;" /> <input type="checkbox" class="optional" data-id="optional9" style="width: 50px;" />
+<div style="color: rgb(113, 76, 201);float: left;margin-left: 20px;">Musurm Pizza</div>
+  <input type="checkbox" class="optional" data-id="optional9"  style="width: 40px;" /> <input type="checkbox" class="optional" data-id="optional9" style="width: 50px;" />&nbsp;  &nbsp;
   <input type="text" class="fee" id="optional9" value="275" name="cpizza" onkeydown="return false"  style="width:90px;color: rgb(223, 247, 231);margin-left: 10px;border: 12px;text-align: center ;background-color: rgb(49, 112, 212); border-radius: 1px 12px 12px 1px;">  
 <br>
 
@@ -65,11 +62,11 @@
 <br>
   <br>
   <input type="number" id="toptional" name="toptional" class="toptional form-control" style="width: 210px;float: left;" placeholder="TOTAL" readonly>
-  <input type="number" id="toptionalgst" name="toptionalgst" class="toptionalgst form-control"style="width:140px;float:left;margin-left:10px"  placeholder="GST"  readonly>
+  <input type="number" id="toptionalgst" title="your amount is paid for GST" name="toptionalgst" class="toptionalgst form-control"style="width:140px;float:left;margin-left:10px"  placeholder="GST"  readonly>
   <br><br>
-  <input type="number" id="ord_price" name="ord_price" style="width: 360px;float: left;" class="toptionalgst form-control" placeholder="TOTAL PRICE" readonly><br><br>
+  <input type="number" id="ord_price" title="your amount is Rupees paid" name="ord_price" style="width: 360px;float: left;" class="toptionalgst form-control" placeholder="TOTAL PRICE" readonly><br><br>
   <div style="margin-left: 160px;">OR</div>
-  <input type="number" id="dollar" name="ord_price1" style="width: 360px;float: left;" class="toptionalgst form-control" placeholder="TOTAL DOLLER" readonly><br><br>
+  <input type="number" id="dollar" title="your amount is dollar paid" name="ord_price1" style="width: 360px;float: left;" class="toptionalgst form-control" placeholder="TOTAL DOLLER" readonly><br><br>
   
   <input type="text" name="ord_name" class="form-control" id="ord_name" style="width: 360px;" placeholder="Enter customer name"> <br>
   

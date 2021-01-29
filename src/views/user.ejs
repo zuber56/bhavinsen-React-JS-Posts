@@ -12,14 +12,11 @@
 
 <h1 style="margin-left: 500px;">DELEVERY ADDRESS PIZZA</h1>
 <div style="width: 900px;height: 700px;margin-left: 300px;">
-  <a href="/order">CUSTOMIZE PIZZA</a>  | <a href="/add">SIDE ORDER </a> | <a href="/add">DELEVERY ADDRESS </a>  |    <a href="/show">Display</a>
-<a href="/add-users-api">Add API </a>  |   
+  <%- include('header'); -%>
+
+  
     <form action="/add" method="POST">
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputName4">Name</label>
-            <input type="text" name="cust_name" class="form-control" id="cust_name" placeholder="Name">
-          </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
             <input type="email" name="cust_email" class="form-control" id="cust_email" placeholder="Email">
@@ -51,10 +48,11 @@
             </label>
           </div>
         </div>
-        <input type="submit" name="sub"  class="btn btn-primary" > 
+        <input type="submit" name="sub" onclick="myFunction()"  class="btn btn-primary" > 
       </form> 
      
       
 </div>
+
 </body>
 </html>

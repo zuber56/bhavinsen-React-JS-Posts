@@ -17,7 +17,6 @@ router.post("/add",urlencoded,async (req,res)=> {
     try {
     
         const mybodydata={
-             cust_name:req.body.cust_name,
              cust_email:req.body.cust_email,
              cust_addrese :req.body.cust_addrese,
              cust_mob:req.body.cust_mob,
@@ -31,6 +30,8 @@ router.post("/add",urlencoded,async (req,res)=> {
         await data.save(data)
         console.log('--------------->'+data)    
         res.render('user')
+        //res.redirect("/user");
+        
         
        
      } catch (error) {
@@ -49,6 +50,24 @@ router.get('/show', function(req, res) {
        }
    }); 
 });
+
+
+/* DELETE User BY ID */
+router.get('/deleteshow/:id', function(req, res) {
+  User.findByIdAndRemove(req.params.id, function(err, project) {
+    if (err) {
+      res.render('show')
+        //req.flash('error_msg', 'Record Not Deleted');
+        //res.redirect('../display');
+    } else {
+
+        //req.flash('success_msg', 'Record Deleted');
+          res.redirect('../show');
+        //res.render('show')
+    }
+});
+});
+
 // app.all('/express-flash', (req, res ) {
 //     req.flash('success', 'This is a flash message using the express-flash module.');
 //     res.redirect(301, '/');

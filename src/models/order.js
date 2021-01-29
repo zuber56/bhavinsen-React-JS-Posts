@@ -2,7 +2,9 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 //const bcrypt = require('bcryptjs')
 //const jwt = require('jsonwebtoken')
+var dateFormat = require("dateformat");
 
+var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
 const orderSchema = new mongoose.Schema({
     
     ord_name:{
@@ -16,6 +18,8 @@ const orderSchema = new mongoose.Schema({
         ord_date:{
             type:Date,
             default:Date.now()
+            
+
         }
 })
 const Order = mongoose.model('order', orderSchema)
