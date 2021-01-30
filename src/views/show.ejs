@@ -11,6 +11,8 @@
 </head>
 <body><br><br>
 <div style="width: 900px;height: 700px;margin-left: 300px;">
+  <h1 style="margin-left: 100px;" class="text-muted">Pizza address customer </h1>
+
   <%- include('header'); -%>
 
   <% if(users.length>0) { %>
@@ -18,10 +20,14 @@
   <thead>
     
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">No</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">Pin</th>
+      <th scope="col">Mob</th>
+        <th scope="col">Action</th>
+
     </tr>
   </thead>
   <tbody>
@@ -36,10 +42,8 @@
 
 
 
-      <td style="width: 170px;color: rgb(44, 46, 44);font-size: 20px;">
-        <a href='/deleteshow/<%= users[i]._id %>' style="color: cornsilk;">Delete</a> |
-        <a href='/show1/<%= users[i]._id %>' style="color: cornsilk">Show</a>
-
+      <td style="width: 100px;color: rgb(44, 46, 44);font-size: 20px;">
+        <a href='/deleteshow/<%= users[i]._id %>' style="color: cornsilk;">Delete</a>
       </td>
      
     </tr>

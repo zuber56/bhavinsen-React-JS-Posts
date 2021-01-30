@@ -21,23 +21,23 @@
       <thead>
         
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Doller or Rupee</th>
+          <th scope="col">No</th>
+          
+          <th scope="col" style="width: 170px;">Name</th>
+          <th scope="col" style="width: 150px;">Doller or Rupee</th>
           <th scope="col">Order Date</th>
-          <th>Action</th>
+          <th style="text-align:center;">Action</th>
         </tr>
       </thead>
       <tbody>
         <% for(var i=0; i<order.length;i++) { %>  
-          <tr>
-          <td><%= i %></td>
-          <th><%= order[i]._id %></th>
+          <tr style="color:greenyellow;">
+          <td><%= i+1 %></td>
+          
           <td><%= order[i].ord_name %></td>
           <td style="width: 100px;"><%= order[i].ord_price %></td>
           <td><%= order[i].ord_date %></td>
-          <td style="width: 170px;color: rgb(44, 46, 44);font-size: 20px;">
+          <td style="width: 170px;color: rgb(250, 252, 250);font-size: 20px;">
             <a href='/delete/<%= order[i]._id %>' style="color: cornsilk;">Delete</a> |
             <a href='/showcard/<%= order[i]._id %>' style="color: cornsilk">Show</a>
   

@@ -6,32 +6,76 @@ const router = new  express.Router()
 const bodyParser = require('body-parser')
 
 const { check, validationResult } = require('express-validator')
-const User = require('../models/user')
+//const User = require('../models/user')
 const app = express()
 
 app.use(bodyParser.json());
 const urlencoded= bodyParser.urlencoded({extended:true})
 router.post("/order",urlencoded,async (req,res)=> {
-    try {
+  
+  try{
+    const ord_name = req.body.ord_name;
+    const ord_price = req.body.ord_price;
+  
+    if (!ord_name) {
+        res.render('order',{message: 'name is required'});
+    }
+    if (!ord_price) {
+        res.render('order',{message: 'Price is required'});
+    }
+    const mybodydata = {
+      ord_name,
+      ord_price
+  }
+    const data = Order(mybodydata)
+  
+    data.save().then((data) => {
+      res.render('order',{message: 'Successefully Register'});
+      console.log(data)
+    }).catch((error)=>{
+      res.send({
+        status:400,
+        error:"something went wrong"
+      })
+    })
+  }
+  catch(error)
+  {
+    res.send({
+      status:400,
+      error:'something went wrong'
+    })
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  //   try {
     
-        const mybodydata={
-             ord_name:req.body.ord_name,
-             ord_price:req.body.ord_price,
-             ord_date:req.body.ord_date
+  //       const mybodydata={
+  //            ord_name:req.body.ord_name,
+  //            ord_price:req.body.ord_price,
+  //            ord_date:req.body.ord_date
         
-        }
-        const data = Order(mybodydata)
+  //       }
+  //       const data = Order(mybodydata)
 
-   // const user = new User(req.body)
-        await data.save((data))
-        console.log('--------------->'+data)    
-       //res.render('order')
-        res.redirect("/add");
+  //  // const user = new User(req.body)
+  //       await data.save((data))
+  //       console.log('--------------->'+data)    
+  //      //res.render('order')
+  //       res.redirect("/add");
         
-     } catch (error) {
+  //    } catch (error) {
        
-        res.status(400).send(error)
-     }
+  //       res.status(400).send(error)
+  //    }
 })
 
 
@@ -66,17 +110,29 @@ router.get('/showcard/:id', function(req, res) {
 });
 
 // 
-router.get('/card', function(req, res) {
-    Order.find(function (err, users) {
-       if (err) {
-         console.log(err);
-         console.log('gg')
-       } else {
-         res.render('card', { order: users });
-        // res.send("dddd")
-       }
-   }); 
-});
+ router.get('/card', function(req, res) {
+  Order.find().then((users)=>{
+    res.render('card',{ order: users });
+  }).catch((error)=>{
+    res.send({
+      status:400,
+      error:"soddddmething want wrong"
+    })
+  })
+ });
+
+
+// router.get('/card', function(req, res) {
+//     Order.find(function (err, users) {
+//        if (err) {
+//          console.log(err);
+//          console.log('gg')
+//        } else {
+//          res.render('card', { order: users });
+//         // res.send("dddd")
+//        }
+//    }); 
+// });
 
 /* DELETE User BY ID */
 router.get('/delete/:id', function(req, res) {

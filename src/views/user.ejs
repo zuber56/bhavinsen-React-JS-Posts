@@ -10,8 +10,10 @@
 </head>
 <body>
 
-<h1 style="margin-left: 500px;">DELEVERY ADDRESS PIZZA</h1>
+<h1 style="margin-left: 500px;" class="text-muted">Delevery Address Pizza</h1>
+
 <div style="width: 900px;height: 700px;margin-left: 300px;">
+
   <%- include('header'); -%>
 
   
@@ -48,10 +50,14 @@
             </label>
           </div>
         </div>
-        <input type="submit" name="sub" onclick="myFunction()"  class="btn btn-primary" > 
+        <input type="submit" name="sub" class="btn btn-primary"  > 
       </form> 
-     
-      
+     <br>
+      <%if(message.length > 0){%>
+        <div class="alert alert-success" style="width: 600px;height:70px ;"><a href="/card" style="color: rgb(48, 3, 3);font-size: 20px;" class="btn btn-outline-warning" > Go to place conform order</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=message %></div>
+        <%}%>
+          
+                
 </div>
 
 </body>
