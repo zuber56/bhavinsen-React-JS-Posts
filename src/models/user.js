@@ -7,25 +7,33 @@ const userSchema = new mongoose.Schema({
     
     cust_email: {
         type: String,
-        // unique:true,
-        // trim: true,
-        // lowercase: true,
-        // validate(value) {
-        //     if (!validator.isEmail(value)) {
-        //         throw new Error('Email is invalid')
-        //     }
-        // }
+         unique:true,
+         required:true,
+         trim:true,
+         isEmail:true,
+         normalizeEmail:true,
+        lowercase: true,
+        validate(value) {
+            if (!validator.isEmail(value)) {
+                throw new Error('Email is invalid')
+               }
+        }
     },
     cust_addrese: {
         type: String,
-        // required: true,
+         required: true,
     },
     cust_city:{
-        type:String
+        type:String,
+        required:true
     },cust_mob:{
-        type:Number
+        type:Number,
+        required:true,
+        maxlength: 10
     },cust_pin:{
-        type:Number
+        type:Number,
+        required:true,
+        minlength:6
     }
 
 })

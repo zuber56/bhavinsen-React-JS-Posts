@@ -2,6 +2,7 @@ const express = require('express')
 const User =require('./models/user')
 const mongoose = require("mongoose");
 const { MONGOURI } = require('./db/mongoose');
+const nodemailer = require("nodemailer");
 
 //require('./router/user')
 // require('./db/mongoose')
@@ -38,7 +39,9 @@ app.set('view engine', 'ejs');
 
 app.get('/add', function (req, res) {
     res.render("user",{message:req.flash('message')});
-})  
+})
+
+
 app.get('/order', function (req, res) {
     res.render("order",{message:req.flash('message')});
 })  
@@ -51,27 +54,11 @@ app.get('/order', function (req, res) {
 
 app.get('/order',(req,res)=>{
     res.render("order")
+    res.send('sddfsdf')
 })
 
 
 //List Table Data
-
-
-
-// var tagline = "No programming concept is complete without a cute animal mascot.";
-
-// app.get('/user',(req,res)=>{
-//     var mascots = [
-//         { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
-//         { name: 'Tux', organization: "Linux", birth_year: 1996},
-//         { name: 'Moby Dock', organization: "Docker", birth_year: 2013}
-//     ];
-//     res.render('show', {
-//         mascots: mascots,
-//         tagline: tagline
-//     });
-// })
-
 
 
 // app.get('/display',(req,res)=>{

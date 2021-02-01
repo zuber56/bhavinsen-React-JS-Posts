@@ -101,54 +101,47 @@ router.get('/showcard/:id', function(req, res) {
           console.log(err);
       } else {
           console.log(user);
-
           res.render('showcard', { order: user });
           //res.redirect('../showcard');
-          
       }
   });
 });
 
-// 
+//
+router.get('/showcard/:id', function(req, res) {
+  Order.findById(req.params.id).then((users)=>{
+    res.render('card',{ order: users });
+  }).catch((error)=>{
+    res.send({
+      status:400,
+      error:"page card mething want wrong"
+    })
+  })
+ });
+// one user by id
  router.get('/card', function(req, res) {
   Order.find().then((users)=>{
     res.render('card',{ order: users });
   }).catch((error)=>{
     res.send({
       status:400,
-      error:"soddddmething want wrong"
+      error:"page card mething want wrong"
     })
   })
  });
 
-
-// router.get('/card', function(req, res) {
-//     Order.find(function (err, users) {
-//        if (err) {
-//          console.log(err);
-//          console.log('gg')
-//        } else {
-//          res.render('card', { order: users });
-//         // res.send("dddd")
-//        }
-//    }); 
-// });
-
 /* DELETE User BY ID */
 router.get('/delete/:id', function(req, res) {
-  Order.findByIdAndRemove(req.params.id, function(err, project) {
-      if (err) {
-        res.render('order')
-          //req.flash('error_msg', 'Record Not Deleted');
-          //res.redirect('../display');
-      } else {
-
-          //req.flash('success_msg', 'Record Deleted');
-          res.redirect('../card');
-          //res.render('card')
-      }
-  });
-});
+  Order.findByIdAndRemove(req.params.id).then((users)=>{
+  //  res.render('card')
+  res.redirect('../card');
+  }).catch((error)=>{
+    res.send({
+      status:400,
+      error:"page card mething want wrong"
+    })
+  })
+ });
 
 
 module.exports =router
