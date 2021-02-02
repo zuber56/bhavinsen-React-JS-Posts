@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
+const Schema = mongoose.Schema;
+
 //const bcrypt = require('bcryptjs')
 //const jwt = require('jsonwebtoken')
 
@@ -7,17 +9,8 @@ const userSchema = new mongoose.Schema({
     
     cust_email: {
         type: String,
-         unique:true,
-         required:true,
-         trim:true,
-         isEmail:true,
-         normalizeEmail:true,
-        lowercase: true,
-        validate(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error('Email is invalid')
-               }
-        }
+        required:true,
+       
     },
     cust_addrese: {
         type: String,
@@ -34,7 +27,11 @@ const userSchema = new mongoose.Schema({
         type:Number,
         required:true,
         minlength:6
-    }
+    },
+     cust_info:[{
+        type: Schema.Types.ObjectId,
+        ref:'order',
+    }]
 
 })
 const User = mongoose.model('user', userSchema)

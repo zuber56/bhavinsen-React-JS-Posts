@@ -2,10 +2,10 @@ const express = require('express')
 const User =require('./models/user')
 const mongoose = require("mongoose");
 const { MONGOURI } = require('./db/mongoose');
-const nodemailer = require("nodemailer");
 
 //require('./router/user')
 // require('./db/mongoose')
+
 
 
 
@@ -38,6 +38,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/add', function (req, res) {
+    
     res.render("user",{message:req.flash('message')});
 })
 
@@ -46,29 +47,14 @@ app.get('/order', function (req, res) {
     res.render("order",{message:req.flash('message')});
 })  
 
-// app.get('/showcard/:id', function (req, res) {
-//     //res.render("user")
-//     console.log('fsdfsfdsf')
-//     res.render("showcard")
-// })  
-
 app.get('/order',(req,res)=>{
     res.render("order")
-    res.send('sddfsdf')
-})
-
-
-//List Table Data
-
-
-// app.get('/display',(req,res)=>{
-//     res.render("order")
-// })
-
+    })
 
 //user
 const userRouter =require('./router/user')
 const orderRouter=require('./router/order');
+//const emailRouter=require('./router/mail');
 const SendmailTransport = require('nodemailer/lib/sendmail-transport');
 
 // app.use()
@@ -77,6 +63,3 @@ app.use('/',orderRouter)
 app.listen(port, () => {
 console.log('Server is up on port ' + port)
 })
-//app.use(express.json())
-//app.use(userRouter)
-//const userRouter=require('./router/user')

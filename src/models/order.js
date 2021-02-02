@@ -3,7 +3,7 @@ const validator = require('validator')
 //const bcrypt = require('bcryptjs')
 //const jwt = require('jsonwebtoken')
 var dateFormat = require("dateformat");
-
+const Schema = mongoose.Schema;
 var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
 const orderSchema = new mongoose.Schema({
     
@@ -11,16 +11,17 @@ const orderSchema = new mongoose.Schema({
         type:String,
             require:true
         },
-        ord_price:{
-            type:Number,
-            required:true
+    ord_price:{
+            type:String
         },
-        ord_date:{
+    ord_date:{
             type:Date,
             default:Date.now()
-            
-
-        }
+        },
+    ord_info:{
+            type: Schema.Types.ObjectId,
+            ref:'user',
+       },
 })
 const Order = mongoose.model('order', orderSchema)
 module.exports = Order

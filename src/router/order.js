@@ -15,6 +15,8 @@ router.post("/order",urlencoded,async (req,res)=> {
   
   try{
     const ord_name = req.body.ord_name;
+    //const cust_info=req.body.cust_info;
+    //const ord_pizza = req.body.ord_pizza;
     const ord_price = req.body.ord_price;
   
     if (!ord_name) {
@@ -23,19 +25,21 @@ router.post("/order",urlencoded,async (req,res)=> {
     if (!ord_price) {
         res.render('order',{message: 'Price is required'});
     }
+    
     const mybodydata = {
       ord_name,
-      ord_price
+      ord_price,
+  
   }
     const data = Order(mybodydata)
-  
+ 
     data.save().then((data) => {
       res.render('order',{message: 'Successefully Register'});
       console.log(data)
     }).catch((error)=>{
       res.send({
         status:400,
-        error:"something went wrong"
+        error:"somethingddd went wrong"
       })
     })
   }
@@ -119,8 +123,9 @@ router.get('/showcard/:id', function(req, res) {
   })
  });
 // one user by id
- router.get('/card', function(req, res) {
-  Order.find().then((users)=>{
+ router.get('/card',async function(req, res) {
+  await Order.find()
+  .then((users)=>{
     res.render('card',{ order: users });
   }).catch((error)=>{
     res.send({
@@ -129,6 +134,8 @@ router.get('/showcard/:id', function(req, res) {
     })
   })
  });
+
+ 
 
 /* DELETE User BY ID */
 router.get('/delete/:id', function(req, res) {
